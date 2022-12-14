@@ -16,5 +16,5 @@ server {
                 proxy_redirect off;
                 proxy_buffering off;
         }
-	
+
 }
