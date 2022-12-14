@@ -14,7 +14,7 @@ server {
                 proxy_set_header X-Forwarded-Proto $scheme;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $http_host;
-		# localhost seguido da porta na qual está configurado para rodar a aplicação
+                # localhost seguido da porta na qual está configurado para rodar a aplicação
                 proxy_pass http://localhost:porta;
                 proxy_redirect off;
         }
