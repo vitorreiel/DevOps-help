@@ -1,7 +1,7 @@
 # Aviso: Por padrão o UFW já irá fazer parte da sua máquina, portanto não é necessário instalação
 # Habilitar UFW para utilizar o protocolo IPV6 (Opcional)
 sudo nano /etc/default/ufw
-	"IPV6=yes"
+        "IPV6=yes"
 
 # Comando para habilitar o firewall UFW na máquina e para desabilita-lo
 sudo ufw enable
@@ -13,7 +13,7 @@ sudo ufw status
 # Para fazer a adição de alguma política de acesso a máquina com o UFW
 sudo ufw allow # Seguido da porta ou nome do serviço
 # Exemplo: 
-	# sudo ufw allow ssh ou sudo ufw allow 22 (Habilita o acesso do serviço SSH)
+        # sudo ufw allow ssh ou sudo ufw allow 22 (Habilita o acesso do serviço SSH)
 
 # Para habilitar uma sequência de portas, selecionando o protocolo TCP ou UDP
 sudo ufw allow 6000:6007/tcp
