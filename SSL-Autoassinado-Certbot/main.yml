@@ -1,6 +1,5 @@
 # Instalação Certbot
-sudo snap install core; sudo snap refresh core
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
+sudo apt install certbot python3-certbot-nginx
 
 # Remover Certbot
 sudo apt remove certbot
