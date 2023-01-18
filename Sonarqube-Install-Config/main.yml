@@ -1,10 +1,11 @@
 # Baixar todas as dependencias do Sonarqube
 apt install wget unzip default-jdk -y
 # Baixar o Sonarqube na VM
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip
-# Instalar o unzip para extrair o arquivo .zip no diretorio padrão
+wget -O sonarqube https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip
+# Extrair o arquivo .zip no diretorio padrão
 unzip sonarqube-9.8.0.63668.zip -d /opt/
-mv /opt/sonarqube-9.8.0.63668 /opt/sonarqube
+# Mudar o nome do diretorio
+mv /opt/sonarqube-9.8.0.63668.zip /opt/sonarqube
 # Boa prática, criar um usuário para configurar o serviço do sonarqube
 useradd sonar
 chown -R sonar:sonar /opt/sonarqube
@@ -25,3 +26,16 @@ Restart=always
 WantedBy=multi-user.target
 # Iniciar o serviço
 service start sonar.service
+
+
+# Instalação Sonarqube Scanner
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+# Extrair o arquivo .zip no diretorio padrão
+unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/
+# Mudar o nome do diretorio
+mv /opt/sonar-scanner-cli-4.7.0.2747-linux.zip /opt/sonar-scanner
+# Dar permissão do usuario no diretorio
+chown -R sonar:sonar /opt/sonar-scanner
+echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
+# Instalação do Node.js
+apt install nodejs -y
