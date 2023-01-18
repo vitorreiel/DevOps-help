@@ -8,7 +8,7 @@ service mysql restart
 [Funcionamento]
 mysql
 CREATE DATABASE nome_database;
-CREATE USER 'nome_usuario'@'%' IDENTIFIED BY 'senha';
+CREATE USER 'nome_usuario'@'%' IDENTIFIED BY mysql_native_password BY 'senha';
 GRANT ALL PRIVILEGES ON nome_database.* TO 'nome_usuario'@'%';
 USE nome_database;
 FLUSH PRIVILEGES;
