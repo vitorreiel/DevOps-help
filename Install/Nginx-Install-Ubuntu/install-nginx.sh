@@ -5,7 +5,7 @@ i=1
 l=1
 while [ $i -le $num ]; do
 	echo "Digite o nome do domínio: "
-	read ${array[i]}
+	read array[i]
 	i=$((i+1))
 done
 sudo apt update
