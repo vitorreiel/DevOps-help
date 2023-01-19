@@ -3,17 +3,18 @@ echo "Digite o número de dominíos que serão hospedados: "
 read num
 i=1
 l=1
-while [ $i -le $num ]; then
+while [ $i -le $num ]; do
 	echo "Digite o nome do domínio: "
 	read ${array[i]}
-	i+=1
+	i=$((i+1))
 done
-sudo apt udpate
-sudo apt install nginx
-while [ $i -ge $l ]; then
+sudo apt update
+sudo apt install nginx -y > /dev/null 2>&1
+sudo systemctl start nginx
+sudo systemctl enable nginx
+while [ $i -ge $l ]; do
 sudo touch /var/www/${array[i]}
-cat <<EOF>> /etc/nginx/sites-available/${array[i]}
-server {
+echo "server {
         listen 80;
         listen [::]:80;
 
@@ -25,8 +26,8 @@ server {
         location / {
                 try_files $uri $uri/ =404;
         }
-}
-EOF
+}" | tee -a ${array[i]} > /dev/null 2>&1
+sudo mv ${array[i]} /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/${array[i]} /etc/nginx/sites-enabled/
 done
 sudo unlink /etc/nginx/sites-enabled/default
