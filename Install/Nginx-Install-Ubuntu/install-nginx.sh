@@ -29,7 +29,7 @@ while [ $i -ge $l ]; do
 	}" | tee -a ${array[i]} > /dev/null 2>&1
 	sudo mv ${array[i]} /etc/nginx/sites-available/
 	sudo ln -s /etc/nginx/sites-available/${array[i]} /etc/nginx/sites-enabled/
-	sudo rm /etc/nginx/sites-enabled/sites-available
 	i=$((i-1))
 done
+sudo rm /etc/nginx/sites-enabled/sites-available
 sudo unlink /etc/nginx/sites-enabled/default
