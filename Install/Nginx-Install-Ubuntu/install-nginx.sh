@@ -27,8 +27,8 @@ while [ $i -ge $l ]; do
 			try_files $uri $uri/ =404;
 		}
 	}" | tee -a ${array[i]} > /dev/null 2>&1
-	sudo mv ${array[i]} /etc/nginx/sites-available/ -y > /dev/null 2>&1
-	sudo ln -s /etc/nginx/sites-available/${array[i]} /etc/nginx/sites-enabled/ -y > /dev/null 2>&1
+	sudo mv ${array[i]} /etc/nginx/sites-available/ > /dev/null 2>&1
+	sudo ln -s /etc/nginx/sites-available/${array[i]} /etc/nginx/sites-enabled/ > /dev/null 2>&1
 	i=$((i-1))
 done
 sudo rm /etc/nginx/sites-enabled/sites-available > /dev/null 2>&1
