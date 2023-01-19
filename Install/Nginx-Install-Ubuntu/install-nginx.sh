@@ -13,21 +13,22 @@ sudo apt install nginx -y > /dev/null 2>&1
 sudo systemctl start nginx
 sudo systemctl enable nginx
 while [ $i -ge $l ]; do
-sudo touch /var/www/${array[i]}
-echo "server {
-        listen 80;
-        listen [::]:80;
+	sudo touch /var/www/${array[i]}
+	echo "server {
+		listen 80;
+		listen [::]:80;
 
-        root /var/www/${array[i]};
-        index index.html index.htm index.nginx-debian.html;
+		root /var/www/${array[i]};
+		index index.html index.htm index.nginx-debian.html;
 
-        server_name ${array[i]}.com www.${array[i]}.com;
+		server_name ${array[i]}.com www.${array[i]}.com;
 
-        location / {
-                try_files $uri $uri/ =404;
-        }
-}" | tee -a ${array[i]} > /dev/null 2>&1
-sudo mv ${array[i]} /etc/nginx/sites-available/
-sudo ln -s /etc/nginx/sites-available/${array[i]} /etc/nginx/sites-enabled/
+		location / {
+			try_files $uri $uri/ =404;
+		}
+	}" | tee -a ${array[i]} > /dev/null 2>&1
+	sudo mv ${array[i]} /etc/nginx/sites-available/
+	sudo ln -s /etc/nginx/sites-available/${array[i]} /etc/nginx/sites-enabled/
+	i=$((i-1))
 done
 sudo unlink /etc/nginx/sites-enabled/default
