@@ -13,7 +13,7 @@ sudo apt install nginx -y > /dev/null 2>&1
 sudo systemctl start nginx
 sudo systemctl enable nginx
 while [ $i -ge $l ]; do
-	sudo mkdir /var/www/${array[i]}
+	sudo mkdir /var/www/${array[i]} > /dev/null 2>&1
 	echo "server {
 		listen 80;
 		listen [::]:80;
