@@ -8,7 +8,6 @@ echo -e "\033[1;33m- [ SELECT Node.js Version {Example: v14.10.0} ] ------------
 read versaoNode
 echo -e "\033[1;32m- [ INSTALLING Node.js Version: $versaoNode ] -------------------------------------------------------- \033[>source ~/.nvm/nvm.sh
 nvm install $versaoNode
-nvm alias default $versaoNode
 nvm use $versaoNode
 node --version
 echo -e "\033[1;32m- [ INSTALLING Npm ] ------------------------------------------------------------------------------ \033[0m"
