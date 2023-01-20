@@ -5,7 +5,7 @@ echo -e "\033[1;32m- [ INSTALLING Nvm ] ----------------------------------------
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash > /dev/null 2>&1
 source ~/.bashrc
 echo -e "\033[1;32m- [ INSTALLING Npm ] ------------------------------------------------------------------------------ \033[0m"
-sudo apt install npm > /dev/null 2>&1
+sudo apt install npm -y > /dev/null 2>&1
 echo -e "\033[1;31m- [ SELECT Node.js Version {Example: v14.10.0} ] ------------------------------------------------------------------------------ \033[0m"
 read versaoNode
 echo -e "\033[1;32m- [ INSTALLING Node.js Version: $versaoNode ] ------------------------------------------------------------------------------ \033[0m"
