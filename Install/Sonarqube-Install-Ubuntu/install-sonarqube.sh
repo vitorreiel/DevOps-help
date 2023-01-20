@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Install Sonarqube, Sonar-scanner, JDK, Unzip, Wget
+sudo apt update
 echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
 sudo apt install wget unzip default-jdk -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Sonarqube ] ------------------------------------------------------------------------- \033[0m"
