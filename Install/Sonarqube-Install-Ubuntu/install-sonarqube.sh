@@ -2,10 +2,10 @@
 
 # Install Sonarqube, Sonar-scanner, JDK, Unzip, Wget
 echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
-sudo apt install wget unzip default-jdk -y
+sudo apt install wget unzip default-jdk -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Sonarqube ] ------------------------------------------------------------------------------ \033[0m"
-sudo wget -O sonarqube https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip
-sudo unzip sonarqube-9.8.0.63668.zip -d /opt/
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip
+sudo unzip sonarqube-9.8.0.63668.zip -d /opt/ > /dev/null 2>&1
 sudo mv /opt/sonarqube-9.8.0.63668 /opt/sonarqube
 echo -e "\033[1;32m- [ CREATE User 'sonar' ] ------------------------------------------------------------------------------ \033[0m"
 sudo useradd sonar
@@ -33,7 +33,7 @@ sudo service start sonar.service
 # Install Sonar Scanner
 echo -e "\033[1;32m- [ INSTALLING Sonar-scanner ] ------------------------------------------------------------------------------ \033[0m"
 sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/
+sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/ > /dev/null 2>&1
 sudo mv /opt/sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner
 sudo chown -R sonar:sonar /opt/sonar-scanner
 echo -e "\033[1;32m- [ CREATE variable global 'sonar-scanner' ] ------------------------------------------------------------------------------ \033[0m"
