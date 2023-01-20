@@ -1,8 +1,10 @@
 #!/bin/bash
 
 # Install Sonarqube, Sonar-scanner, JDK, Unzip, Wget
-echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"sudo apt install wget unzip default-jdk -y > /dev/null 2>&1
-echo -e "\033[1;32m- [ INSTALLING Sonarqube ] ------------------------------------------------------------------------- \033[0m"sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip > /dev/null 2>&1
+echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
+sudo apt install wget unzip default-jdk -y > /dev/null 2>&1
+echo -e "\033[1;32m- [ INSTALLING Sonarqube ] ------------------------------------------------------------------------- \033[0m"
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip > /dev/null 2>&1
 sudo unzip sonarqube-9.8.0.63668.zip -d /opt/ > /dev/null 2>&1
 sudo mv /opt/sonarqube-9.8.0.63668 /opt/sonarqube
 echo -e "\033[1;32m- [ CREATE User 'sonar' ] -------------------------------------------------------------------------- \033[0m"
