@@ -4,15 +4,15 @@
 sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
 sudo apt install epel-release wget default-jdk -y > /dev/null 2>&1
-echo -e "\033[1;32m- [ DOWNLOADING Jenkins ] ------------------------------------------------------------------------------ \033[0m"
+echo -e "\033[1;32m- [ DOWNLOADING Jenkins ] -------------------------------------------------------------------------- \033[0m"
 sudo curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 sudo echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
   https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt update > /dev/null 2>&1
-echo -e "\033[1;32m- [ INSTALLING Jenkins ] ------------------------------------------------------------------------------ \033[0m"
-sudo apt install jenkins > /dev/null 2>&1
+echo -e "\033[1;32m- [ INSTALLING Jenkins ] --------------------------------------------------------------------------- \033[0m"
+sudo apt install jenkins -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ STARTING Jenkins ] ------------------------------------------------------------------------------ \033[0m"
 sudo systemctl start jenkins
 sudo systemctl daemon-reload
