@@ -10,10 +10,8 @@ sudo mv /opt/sonarqube-9.8.0.63668 /opt/sonarqube
 echo -e "\033[1;32m- [ CREATE User 'sonar' ] ------------------------------------------------------------------------------ \033[0m"
 sudo useradd sonar
 sudo chown -R sonar:sonar /opt/sonarqube
-sudo touch /etc/systemd/system/sonar.service
 echo -e "\033[1;32m- [ CREATE sonar.service ] ------------------------------------------------------------------------------ \033[0m"
-sudo cat <<EOT >> /etc/systemd/system/sonar.service
-[Unit]
+echo"[Unit]
 Description=Sonarqube service
 After=syslog.target network.target
 [Service]
@@ -25,8 +23,8 @@ User=sonar
 Group=sonar
 Restart=always
 [Install]
-WantedBy=multi-user.target
-EOT
+WantedBy=multi-user.target" | tee -a sonar.service > /dev/null 2>&1
+sudo mv sonar.service /etc/systemd/system/
 echo -e "\033[1;32m- [ STARTING sonar.service ] ------------------------------------------------------------------------------ \033[0m"
 sudo service start sonar.service
 
