@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Install Docker, Containerd and Docker compose
 sudo apt-get update
 sudo apt-get install \
