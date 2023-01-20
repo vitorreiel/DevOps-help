@@ -29,6 +29,7 @@ Group=sonar
 Restart=always
 [Install]
 WantedBy=multi-user.target" | tee -a sonar.service > /dev/null 2>&1
+sudo mv sonar.service /etc/systemd/system/
 sudo systemctl start sonar.service
 fi
 echo -e "\033[1;32m- [ STARTING sonar.service ] ----------------------------------------------------------------------- \033[0m"
