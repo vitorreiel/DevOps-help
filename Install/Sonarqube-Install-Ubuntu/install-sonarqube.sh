@@ -11,7 +11,7 @@ echo -e "\033[1;32m- [ CREATE User 'sonar' ] -----------------------------------
 sudo useradd sonar
 sudo chown -R sonar:sonar /opt/sonarqube
 echo -e "\033[1;32m- [ CREATE sonar.service ] ------------------------------------------------------------------------------ \033[0m"
-echo"[Unit]
+echo "[Unit]
 Description=Sonarqube service
 After=syslog.target network.target
 [Service]
