@@ -30,7 +30,7 @@ sudo service start sonar.service
 
 # Install Sonar Scanner
 echo -e "\033[1;32m- [ INSTALLING Sonar-scanner ] ------------------------------------------------------------------------------ \033[0m"
-sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+sudo wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip > /dev/null 2>&1
 sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/ > /dev/null 2>&1
 sudo mv /opt/sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner
 sudo chown -R sonar:sonar /opt/sonar-scanner
