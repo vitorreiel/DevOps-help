@@ -31,5 +31,6 @@ sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/
 sudo mv /opt/sonar-scanner-cli-4.7.0.2747-linux /opt/sonar-scanner
 sudo chown -R sonar:sonar /opt/sonar-scanner
 PATH=$PATH:/opt/sonar-scanner/bin
+# echo /etc/environment
 # If S.O (CentOS or RedHat)
 #echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
