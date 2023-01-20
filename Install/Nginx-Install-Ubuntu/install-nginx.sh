@@ -10,9 +10,9 @@ while [ $i -le $num ]; do
 done
 sudo apt update > /dev/null 2>&1
 sudo apt install nginx -y > /dev/null 2>&1
-echo -e "\033[1;32m- [ RUNNING Nginx ] ------------------------------------------------------------------------------------- \033[0m       --> 1;32 "
+echo -e "\033[1;32m- [ RUNNING Nginx ] ------------------------------------------------------------------------------------- \033[0m"
 sudo systemctl start nginx
-echo -e "\033[1;32m- [ ENABLE Nginx.service ] ------------------------------------------------------------------------------ \033[0m       --> 1;32 "
+echo -e "\033[1;32m- [ ENABLE Nginx.service ] ------------------------------------------------------------------------------ \033[0m"
 sudo systemctl enable nginx
 while [ $i -ge $l ]; do
 	sudo mkdir /var/www/${array[i]} > /dev/null 2>&1
@@ -35,4 +35,4 @@ echo "server {
 done
 sudo rm /etc/nginx/sites-enabled/sites-available > /dev/null 2>&1
 sudo unlink /etc/nginx/sites-enabled/default > /dev/null 2>&1
-echo -e "\033[1;32m- [ Domains Successfully Created ] ---------------------------------------------------------------------- \033[0m       --> 1;32 "
+echo -e "\033[1;32m- [ Domains Successfully Created ] ---------------------------------------------------------------------- \033[0m"
