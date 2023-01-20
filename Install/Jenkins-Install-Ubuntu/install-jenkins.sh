@@ -30,8 +30,8 @@ sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Docker | Docker Compose | Containerd ] ------------------------------------------------ \033[0m"
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ STARTING Docker ] ------------------------------------------------------------------------------ \033[0m"
-sudo systemctl start docker
-sudo systemctl enable docker
+sudo systemctl start docker > /dev/null 2>&1
+sudo systemctl enable docker > /dev/null 2>&1
 sudo systemctl daemon-reload
 
 # Show default password admin jenkins
