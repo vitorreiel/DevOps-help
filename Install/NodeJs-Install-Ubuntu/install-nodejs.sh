@@ -19,16 +19,17 @@ echo -e "\033[1;32m- [ Successfully Install Node.js ] --------------------------
 sudo npm install --global yarn
 echo -e "\033[1;31m- [ #ERROR: Failed command 'nvm use $versaoNode' ] --------------------------------------------------- \033[0m"
 
-# [Show all versions Node.js]
+# [ Show all versions Node.js ]
 # nvm list-remote
 
-# [Install specific version Node.js]
+# [ Install specific version Node.js ]
 # nvm install v14.10.0
 
-# [Execution Npm]
+# [ Execution Npm ]
 # npm run build
 # npm run start
 
-# [Execution Yarn]
+# [ Execution Yarn ]
 # yarn
+# yarn start
 # yarn build
