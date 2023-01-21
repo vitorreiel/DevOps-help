@@ -16,6 +16,7 @@ nvm use $versaoNode > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Npm ] ------------------------------------------------------------------------------ \033[0m"
 sudo apt install npm -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ Successfully Install Node.js ] ---------------------------------------------------------------- \033[0m"
+sudo npm install --global yarn
 echo -e "\033[1;31m- [ #ERROR: Failed command 'nvm use $versaoNode' ] --------------------------------------------------- \033[0m"
 
 # [Show all versions Node.js]
@@ -23,3 +24,11 @@ echo -e "\033[1;31m- [ #ERROR: Failed command 'nvm use $versaoNode' ] ----------
 
 # [Install specific version Node.js]
 # nvm install v14.10.0
+
+# [Execution Npm]
+# npm run build
+# npm run start
+
+# [Execution Yarn]
+# yarn
+# yarn build
