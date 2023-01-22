@@ -11,3 +11,8 @@ git push -u origin main
 git remote add origin git@github.com:username/repositorio-name.git
 git branch -M main
 git push -u origin main
+
+# ..branch
+git branch
+git branch name-new-branch
+git checkout name-branch
