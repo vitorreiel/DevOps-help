@@ -1,12 +1,12 @@
 [ COMMANDS DOCKER ]
-# build
-docker build -t name/name .
+# build image DockerFile
+docker build . -t name/name
 
 # view all containers in execution
 docker ps
 
-# run container
-docker run name
+# run container, select image created in 'name/name'
+docker run -p PORT:PORT -d name/name
 
 # stop container
 docker container stop name-container
@@ -18,7 +18,10 @@ docker images
 docker image rm --force image-id
 
 # check logs in container
-docker logs -f container-name
+docker logs container-name
+
+# Enter the container
+docker exec -it container-id /bin/bash
 
 [ COMMANDS DOCKER COMPOSE ]
 
