@@ -6,7 +6,7 @@ docker build . -t name/name
 docker ps
 
 # run container, select image created in 'name/name'
-docker run -p PORT:PORT -d name/name
+docker run --name name-container -p PORT:PORT -d name/name
 
 # stop container
 docker container stop name-container
