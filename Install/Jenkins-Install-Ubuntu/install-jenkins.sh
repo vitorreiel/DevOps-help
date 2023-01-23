@@ -3,7 +3,7 @@
 # Install Jenkins
 sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
-sudo apt install epel-release wget default-jdk -y > /dev/null 2>&1
+sudo apt install epel-release wget openjdk-11-jre -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ DOWNLOADING Jenkins ] -------------------------------------------------------------------------- \033[0m"
 sudo curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
   /usr/share/keyrings/jenkins-keyring.asc > /dev/null
