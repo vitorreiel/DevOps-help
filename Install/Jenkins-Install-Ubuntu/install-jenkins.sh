@@ -33,6 +33,7 @@ echo -e "\033[1;32m- [ STARTING Docker ] ---------------------------------------
 sudo systemctl start docker > /dev/null 2>&1
 sudo systemctl enable docker > /dev/null 2>&1
 sudo systemctl daemon-reload
+sudo usermod -aG docker jenkins
 
 # Show default password admin jenkins
 echo -e "\033[1;33m- [ Password Default Jenkins ] --------------------------------------------------------------------- \033[0m"
