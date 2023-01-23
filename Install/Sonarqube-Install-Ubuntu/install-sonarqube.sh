@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Install Sonarqube, Sonar-scanner, JDK, Unzip, Wget
+# Install Sonarqube, Sonar-scanner, JDK, Unzip
 sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
-sudo apt install wget unzip default-jdk -y > /dev/null 2>&1
+sudo apt install openjdk-11-jre unzip -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Sonarqube ] ------------------------------------------------------------------------- \033[0m"
 sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.8.0.63668.zip > /dev/null 2>&1
 sudo unzip sonarqube-9.8.0.63668.zip -d /opt/ > /dev/null 2>&1
@@ -41,8 +41,8 @@ sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/ > /dev/null 2>&1
 sudo mv /opt/sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
 sudo chown -R sonar:sonar /opt/sonar-scanner
 sudo rm sonar*
-echo -e "\033[1;32m- [ Successfully Install Sonarqube | Sonar-Scanner ] ------------------------------------------------------ \033[0m"
-echo -e "\033[1;33m- [ EXECUTE 'PATH=$PATH:/opt/sonar-scanner/bin' ] -------------------------------------------------------- \033[0m"
+echo -e "\033[1;32m- [ Successfully Install Sonarqube | Sonar-Scanner ] ----------------------------------------------- \033[0m"
+echo -e "\033[1;33m- [ EXECUTE 'PATH=\$PATH:/opt/sonar-scanner/bin' ] -------------------------------------------------- \033[0m"
 # echo /etc/environment
 # If S.O (CentOS or RedHat)
 #echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
