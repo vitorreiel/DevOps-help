@@ -1,0 +1,8 @@
+ - cd /var/lib/jenkins/workspace/
+ - Depois faça login como 'root' e execute o comando:
+   - cp -r name-app /root/
+   - Use 'cd' e entre no repositorio da aplicação e execute:
+   - docker login localhost:8123
+ - docker images
+   - docker tag name-app:latest localhost:8123/name-app
+   - docker push new-name-app
