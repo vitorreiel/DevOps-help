@@ -6,10 +6,18 @@
  - Painel de Controle > Gerenciar Jenkins > Gerenciar Extensões > Extensões disponíveis
    - Instalar plugin 'SonarQube Scanner'
  - Painel de Controle > Gerenciar Jenkins > Manage Credentials
-   - Clique em 'System'
-   - Clique em 'Global credentials (unrestricted)'
-   - Clique em 'Add Credentials'
-   - Kind 'Select text' > Scope 'Global' > Secret 'token-sonarqube' > ID 'nome-da-credentials'
+   - Etapa 1
+     - Clique me 'System'
+     - Clique em 'Global crentials (unrestricted)'
+     - Kind 'Username with password'
+     - Em 'Username' coloque seu nome de usuario do github
+     - Em 'Password' coloque o token gerado no github
+     - Em 'ID' pode colocar o mesmo do 'Username' para se identificar mais facilmente
+   - Etapa 2
+     - Clique em 'System'
+     - Clique em 'Global credentials (unrestricted)'
+     - Clique em 'Add Credentials'
+     - Kind 'Select text' > Scope 'Global' > Secret 'token-sonarqube' > ID 'nome-da-credentials'
  - Painel de Controle > Gerenciar Jenkins > Configurar o sistema
    - Procure a sessão 'SonarQube servers'
    - Ative 'Environment variables'
