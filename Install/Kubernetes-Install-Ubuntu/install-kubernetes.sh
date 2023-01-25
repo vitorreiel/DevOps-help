@@ -32,6 +32,6 @@ alias kr='kubectl replace -f'
 alias ks='kubectl get namespaces'
 alias l='ls -lrt'
 alias kga='k get pod --all-namespaces'
-alias kgaa='kubectl get all --show-labels'" | tee -a ~/.bash_aliases
+alias kgaa='kubectl get all --show-labels'" | tee -a ~/.bash_aliases > /dev/null 2>&1
 source ~/.bash_aliases
 echo -e "\033[1;32m- [ Successfully ] ------------------------------------------------------------------------------------- \033[0m"
