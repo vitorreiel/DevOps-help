@@ -41,8 +41,9 @@ sudo unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d /opt/ > /dev/null 2>&1
 sudo mv /opt/sonar-scanner-4.7.0.2747-linux /opt/sonar-scanner
 sudo chown -R sonar:sonar /opt/sonar-scanner
 sudo rm sonar*
+sudo sh -c 'PATH=\$PATH:/opt/sonar-scanner/bin'
 echo -e "\033[1;32m- [ Successfully Install Sonarqube | Sonar-Scanner ] ----------------------------------------------- \033[0m"
-echo -e "\033[1;33m- [ EXECUTE 'PATH=\$PATH:/opt/sonar-scanner/bin' ] -------------------------------------------------- \033[0m"
+echo -e "\033[1;33m- [ EXECUTE 'PATH=\$PATH:/opt/sonar-scanner/bin' ] ------------------------------------------------- \033[0m"
 # echo /etc/environment
 # If S.O (CentOS or RedHat)
 #echo 'export PATH=$PATH:/opt/sonar-scanner/bin' | sudo tee -a /etc/profile
