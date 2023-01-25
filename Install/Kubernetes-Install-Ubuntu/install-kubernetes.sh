@@ -11,7 +11,6 @@ sudo sh -c 'usermod -aG docker $USER && newgrp docker'
 minikube start --driver=docker > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Utilitários ] --------------------------------------------------------------------------- \033[0m"
 sudo apt install unzip telnet net-tools -y > /dev/null 2>&1
-sudo sh -c "echo alias k=kubectl >> /etc/profile"
 echo -e "\033[1;32m- [ INSTALLING Kubectx | Kubens ] ---------------------------------------------------------------------- \033[0m"
 sudo git clone https://github.com/ahmetb/kubectx  /opt/kubectx > /dev/null 2>&1
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -21,4 +20,18 @@ sudo apt install bash-completion -y > /dev/null 2>&1
 sudo echo 'source <(kubectl completion bash)' >> ~/.bashrc
 sudo sh -c 'kubectl completion bash > /etc/bash_completion.d/kubectl'
 sudo echo 'complete -F __start_kubectl k' >> ~/.bashrc
+echo "alias k='kubectl'
+alias kc='k config view --minify | grep name'
+alias kdp='kubectl describe pod'
+alias c='clear'
+alias kd='kubectl describe pod'
+alias ke='kubectl explain'
+alias kf='kubectl create -f'
+alias kg='kubectl get pods --show-labels'
+alias kr='kubectl replace -f'
+alias ks='kubectl get namespaces'
+alias l='ls -lrt'
+alias kga='k get pod --all-namespaces'
+alias kgaa='kubectl get all --show-labels'" | tee -a ~/.bash_aliases
+source ~/.bash_aliases
 echo -e "\033[1;32m- [ Successfully ] ------------------------------------------------------------------------------------- \033[0m"
