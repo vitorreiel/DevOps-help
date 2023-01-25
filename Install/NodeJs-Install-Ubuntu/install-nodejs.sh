@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo -e "\033[1;32m- [ CHECKOUT Atualizações ] ----------------------------------------------------------------------- \033[0m"
 sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Nvm ] ------------------------------------------------------------------------------ \033[0m"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash > /dev/null 2>&1
