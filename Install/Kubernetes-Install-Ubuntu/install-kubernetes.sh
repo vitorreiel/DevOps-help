@@ -7,7 +7,8 @@ sudo snap install kubectl --classic > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Minikube ] ------------------------------------------------------------------------------ \033[0m"
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 > /dev/null 2>&1
 sudo install minikube-linux-amd64 /usr/local/bin/minikube > /dev/null 2>&1
-sudo sh -c 'usermod -aG docker \$USER && newgrp docker'
+#sudo sh -c 'usermod -aG docker \$USER && newgrp docker'
+sudo usermod --append --groups docker "$USER"
 minikube start --driver=docker
 echo -e "\033[1;32m- [ INSTALLING Utilitários ] --------------------------------------------------------------------------- \033[0m"
 sudo apt install unzip telnet net-tools -y > /dev/null 2>&1
