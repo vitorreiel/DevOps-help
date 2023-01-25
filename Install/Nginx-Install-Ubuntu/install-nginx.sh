@@ -8,6 +8,7 @@ while [ $i -le $num ]; do
 	read array[i]
 	i=$((i+1))
 done
+echo -e "\033[1;32m- [ CHECKOUT Atualizações ] ---------------------------------------------------------------------------- \033[0m"
 sudo apt update > /dev/null 2>&1
 sudo apt install nginx -y > /dev/null 2>&1
 echo -e "\033[1;32m- [ RUNNING Nginx ] ------------------------------------------------------------------------------------- \033[0m"
