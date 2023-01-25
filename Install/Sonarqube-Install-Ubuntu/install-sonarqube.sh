@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install Sonarqube, Sonar-scanner, JDK, Unzip
+echo -e "\033[1;32m- [ CHECKOUT Atualizações ] ------------------------------------------------------------------------ \033[0m"
 sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ INSTALLING Java ] ------------------------------------------------------------------------------ \033[0m"
 sudo apt install openjdk-11-jre unzip -y > /dev/null 2>&1
