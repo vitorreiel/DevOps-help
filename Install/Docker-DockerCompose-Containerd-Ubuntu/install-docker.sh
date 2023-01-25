@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install Docker, Containerd and Docker compose
+echo -e "\033[1;32m- [ CHECKOUT Atualizações ] ------------------------------------------------------------------------- \033[0m"
 sudo apt update > /dev/null 2>&1
 echo -e "\033[1;32m- [ DOWNLOADING Docker | Docker Compose | Containerd ] ---------------------------------------------- \033[0m"
 sudo apt install ca-certificates curl gnupg lsb-release -y > /dev/null 2>&1
