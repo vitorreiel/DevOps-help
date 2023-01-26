@@ -1,0 +1,127 @@
+## Roteiro de implementação CI/CD
+
+---
+ - [ Etapa 1 - Criação das VM's e Instalação dos serviços ]
+    - VM 1 -> Jenkins
+       - Instale o Docker e o Jenkins
+    - VM 2 -> Sonarqube
+       - Instale o Sonarqube
+    - VM 3 -> Kubernetes
+       - Instale o Kubernetes
+
+---
+- [ Etapa 2 - Configurando Sonarqube ]
+   - VM 2 -> Sonarqube
+      - Entre na URL do Sonarqube: http://ip_VM2:9000
+      - Faça o login padrão, login e senha: admin
+         - Mude a senha padrão
+	  - Crie um projeto do tipo 'Manually', e dê um nome para o seu projeto
+	  - Vá em, Administrator (perfil) > My Account > Security > Generate Tokens
+   	     - Name: Um nome de sua preferência
+   	     - Type: Pode ser Global
+   	     - Expires in: No expiration
+   	     - Copie e guarde esse token, você vai precisar
+   	  - Vá em, 'Projects' e procure seu projeto recém criado
+   	     - Clique na opção 'Configure analysis' ou clique no próprio projeto
+   	     - Selecione 'With Jenkins'
+   	        - Selecione: GitHub > Configure Analysis > Continue > Continue > Other (for JS, TS...) > Finish this tutorial
+
+---
+- [ Etapa 3 - Configurando Jenkins ]   
+   - VM 1 -> Jenkins
+      - Entre na URL do jenkins: http://ip_VM1:8080
+      - Cole a senha padrão, instale os plugins e crie seu usuário admin
+      - Vá em, Painel de controle > Gerenciar Jenkins > Credentials > System > Global credentials (unrestricted)
+	     - Clique em 'Add Credentials'
+	        - Kind: Username with password
+	        - Scope: Global
+	        - Username: seu_username_GitHub
+	        - Password: token_GitHub
+	        - ID (opcional): dica, mesmo que o Username
+	        - Description (opcional): dica, GitHub
+	        - Clique em Create
+	     - Clique em 'Add Credentials'
+	        - Kind: Secret Text
+	        - Scope: Global
+	        - Secret: Token do Sonarqube, criado anteriormente
+	        - ID (opcional): dica, Sonarqube-token
+	        - Description (opcional): dica, Sonarqube-token 
+	        - Clique em Create
+      - Vá em, Painel de controle > Gerenciar Jenkins > Gerenciar extensões > Extensões disponíveis
+         - Buscar e instalar o plugin: 'SonarQube Scanner'
+      - Va em, Painel de controle > Gerenciar Jenkins > Configurar o sistema > SonarQube servers
+         - Habilite a caixa 'Environment variables'
+         - Clique em 'Add SonarQube'
+            - Name: dica, SonarQube-server
+            - Server URL: http://ip_VM2:9000
+            - Server authentication token: Credential do Sonarqube
+            - Clique em, Aplicar e depois em Salvar
+      - Vá em, Painel de controle > Gerenciar Jenkins > Ferramenta de configuração global > SonarQube Scanner
+         - Clique em 'Adicionar SonarQube Scanner'
+            - Name: dica, SonarQubeScanner
+          	- Marque 'Instalar automaticamente'
+          	- Versão: Selecione a versão desejada do SonarQube Scanner
+          	- Clique em Aplicar depois Salvar
+      - Vá para o Painel de Controle
+         - Clique em, Nova Tarefa
+            - Escolhar o nome do seu pipeline
+            - Selecione a opção pipeline e depois em Create
+            - Nas configurações procure a sessão: Pipeline
+               - Definition: Pipeline script from SCM
+               - SCM: Git
+               - Repository URL: Code HTTPS, do repositório com a aplicação no seu GitHub
+               - Credentials: Selecione a Credential criada anteriormente para o GitHub
+               - Clique em Salvar
+      - Caso já queira executar seu Pipeline, basta clicar em 'Contruir agora'
+
+---
+- [ Etapa 4 - Configurar o Nexus ]
+   - VM 1 -> Jenkins
+      - Entre na URL do Nexus: http://ip_VM1:8081
+      - Vá no terminal da VM 1
+         - Use o comando: Docker exec -it nexus bash (troque o nome do container nexus para o seu)
+         - Use o comando: cat /nexus-data/admin.password  
+         - Copie a senha e volte para o URL do Nexus
+      - Faça login usuário: admin, senha: senha_default
+      - Vá em, Configurações clicando na engrenagem
+      - Depois em 'Users' e em 'Create local user'
+      	 - Faça o preenchimento de todos os campos
+      	    - ID: Seu login
+      	    - Password: Sua senha de login
+      	    - Status: Active
+      	    - Roles: Mova nx-admin para o 'Granted'
+      	    - Clique em 'Create local user'
+	  - Faça logout e depois login com o novo usuário cadastrado
+	  - Vá em, Configurações clicando na engrenagem
+	     - Clique em 'Repositories'
+	     - Depois em 'Create repository'
+	        - docker (hosted)
+	        - Name: docker-repo
+	        - Online: Marcado
+	        - Http: Marcado
+	           - Port: 8123
+	        - Create Repository
+
+---	        
+- [ Etapa 5 - Implementar o Nexus no Jenkins ]
+   - VM 1 -> Jenkins
+      - Entre na URL do Jenkins: http://ip_VM1:8080
+      - Vá em, Painel de Controle > Gerenciar Jenkins > Credentials > System > Global credentials (unrestricted)
+         - Clique em 'Add Credentials'
+            - Kind: Username with password
+            - Scope: Global
+            - Username: login do Nexus
+            - Password: senha do Nexus
+            - ID (opcional): dica, nexus-user
+            - Description (opcional): dica, nexus-user
+            - Clique em Create
+      - Vá em, Painel de Controle > Gerenciar Jenkins > Configurar o sistema >  Propriedades globais
+         - Marque a opção 'Variáveis de ambiente' depois em 'Adicionar'
+            - nome: NEXUS_URL
+            - valor: localhost:8123
+            - Clique em Aplicar depois em Salvar
+      - Depois de configurar seu JenkinsFile, Construa o pipeline
+
+---
+- [ Etapa 6 - Configurar o Kubernetes ]
+   -                      
