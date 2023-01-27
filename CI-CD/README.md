@@ -102,7 +102,7 @@
 	           - Port: 8123
 	        - Create Repository
 
----	        
+---
 - [ Etapa 5 - Implementar o Nexus no Jenkins ]
    - VM 1 -> Jenkins
       - Entre na URL do Jenkins: http://ip_VM1:8080
@@ -124,4 +124,32 @@
 
 ---
 - [ Etapa 6 - Configurar o Kubernetes ]
-   -                      
+
+---
+- [ Etapa 7 - Git tag ]
+   - Controle de versões
+      - v2.0.0 -> Primeiro dígito a esquerda, Nova release. Grandes mudanças na estrutura em comparação a: v1.0.0
+      - v1.1.0 -> Segundo dígito, Adicionado nova funcionalidade
+      - v1.1.1 -> Terceiro dígito, Correção de bug
+---
+- [ Etapa 8 - Configurar o Grafana com Prometheus e Node-Exporter ]
+   - VM 1 -> Jenkins
+      - Entre na URL do Jenkins: http://ip_VM1:3000
+         - Faça o login padrão, Login: admin e Password: admin
+            - Mude a senha padrão
+	 - Vá em, Configurações clicando na engrenagem e selecione 'Data sources'
+            - Clique em 'Add data source' e selecione o 'Prometheus'
+               - Na sessão HTTP
+                  - URL: http://VM_doPrometheus:9090
+                  - Deixe tudo como está e clique em Salvar
+         - Vá em, https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+	    - Procure o link do GitHub e clique nele
+            - Depois clique na pasta do 'prometheus'
+               - Abra o arquivo 'node-exporter-full.json'
+               - Clique em 'Raw'
+               - Copie todo o conteúdo e volte para o Grafana
+         - Clique em Dashboards e em seguida, clique em Import
+            - Agora clique em 'Load'
+               - Name: Nome de sua preferência para o Dashboard
+               - Prometheus: Prometheus
+               - Clique em Import
