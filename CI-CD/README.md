@@ -131,6 +131,9 @@
       - v2.0.0 -> Primeiro dígito a esquerda, Nova release. Grandes mudanças na estrutura em comparação a: v1.0.0
       - v1.1.0 -> Segundo dígito, Adicionado nova funcionalidade
       - v1.1.1 -> Terceiro dígito, Correção de bug
+      
+      - git tag -a v1.0.0 -m 'Release inicial'
+      - git push origin v1.0.0
 ---
 - [ Etapa 8 - Configurar o Grafana com Prometheus e Node-Exporter ]
    - VM 1 -> Jenkins
