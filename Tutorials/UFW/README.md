@@ -12,7 +12,7 @@ sudo ufw status
 
 # Para fazer a adição de alguma política de acesso a máquina com o UFW
 sudo ufw allow # Seguido da porta ou nome do serviço
-# Exemplo: 
+# Exemplo:
         # sudo ufw allow ssh ou sudo ufw allow 22 (Habilita o acesso do serviço SSH)
 
 # Para habilitar uma sequência de portas, selecionando o protocolo TCP ou UDP
@@ -20,9 +20,9 @@ sudo ufw allow 6000:6007/tcp
 sudo ufw allow 6000:6007/udp
 
 # Habilitar o acesso a um IP específico
-sudo ufw allow from 203.0.113.4 
+sudo ufw allow from 203.0.113.4
 
-# Caso deseje especificar a porta de acesso desse ip: 
+# Caso deseje especificar a porta de acesso desse ip:
 sudo ufw allow from 203.0.113.4 to any port 22
 
 # Para identificar os serviços com acesso por seu ID

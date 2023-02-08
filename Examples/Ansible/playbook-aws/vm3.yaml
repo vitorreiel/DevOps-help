@@ -1,0 +1,41 @@
+- name: Playbook - VM 3
+  hosts: server-VM3
+  tasks:
+  - name: Check Updates
+    apt:
+      update_cache: true
+
+  - name: Instalação de depedências do Docker
+    apt:
+      pkg:
+        - ca-certificates
+        - curl
+        - gnupg 
+        - lsb-release
+      state: present
+      update_cache: true
+
+  - name: Adicionando a chave do repositório de instalação Docker 
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Adicionando repositório de instalação Docker
+    apt_repository:
+      repo: deb https://download.docker.com/linux/ubuntu focal stable
+      state: present
+
+  - name: Instalação do Docker
+    apt:
+      pkg:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-compose-plugin
+      state: present
+      update_cache: true
+  
+  - name: Iniciando Docker
+    service:
+      name: docker
+      state: started

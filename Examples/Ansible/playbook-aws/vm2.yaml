@@ -1,0 +1,22 @@
+- name: Playbook - VM 2
+  hosts: server-VM2
+  tasks:
+  - name: Check Updates
+    apt:
+      update_cache: true
+
+  - name: Instalação do Java
+    apt:
+      name: openjdk-11-jdk
+      state: present
+
+  - name: Instalação do Nginx
+    apt:
+      name: nginx
+      state: present
+      update_cache: true
+
+  - name: Iniciando Nginx
+    service:
+      name: nginx
+      state: started

@@ -12,4 +12,3 @@ sudo systemctl start snap.certbot.renew.service
 
 # Teste de renovação, para ter certeza que a configuração foi efetiva
 sudo certbot renew --dry-run
-

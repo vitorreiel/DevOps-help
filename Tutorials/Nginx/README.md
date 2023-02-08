@@ -5,7 +5,7 @@ sudo apt install nginx
 # Caso esteja utilizando o Firewall UFW
 sudo ufw allow 'Nginx HTTP' # Libera o acesso do Nginx na porta 80
 sudo ufw allow 'Nginx HTTPS' # Libera o acesso do Nginx na porta 443 (TLS/SSL)
-sudo ufw allow 'Nginx FULL' # Libera os acessos do Nginx nas portas 80 e 443 
+sudo ufw allow 'Nginx FULL' # Libera os acessos do Nginx nas portas 80 e 443
 
 # Local da configuração onde sua aplicação
 sudo nano /etc/nginx/sites-available/your_domain
