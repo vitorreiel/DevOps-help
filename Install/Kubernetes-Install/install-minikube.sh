@@ -20,7 +20,7 @@ echo -e "\033[1;32m- [ INSTALLING Minikube ] -----------------------------------
 sudo snap install kubectl --classic > /dev/null 2>&1
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 > /dev/null 2>&1
 sudo install minikube-linux-amd64 /usr/local/bin/minikube > /dev/null 2>&1
-echo "Execute: exit"
+echo "\033[1;33m- Digite o comando abaixo: exit \033[0m"
 sudo sh -c 'sudo usermod -aG docker $USER && newgrp docker'
 minikube start
 sudo rm minikube*
