@@ -1,0 +1,105 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: zabbix-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    expose:
+      - 3306
+      - 33060
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      zabbix-network:
+        ipv4_address: 172.22.0.2
+    restart: always
+
+  zabbix-server:
+    depends_on:
+      - mysql
+    image: zabbix/zabbix-server-mysql:latest
+    container_name: zabbix-server
+    environment:
+      - DB_SERVER_HOST=${DB_SERVER_HOST}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - 10051:10051
+    networks:
+      zabbix-network:
+        ipv4_address: 172.22.0.3
+    restart: always
+
+  zabbix-agent:
+    depends_on:
+      - zabbix-server
+    image: zabbix/zabbix-agent:latest
+    container_name: zabbix-agent
+    environment:
+      - ZBX_HOSTNAME=${ZBX_HOSTNAME}
+      - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
+    command: >
+      sh -c "sed -i 's/^# ListenIP=0.0.0.0/ListenIP=0.0.0.0/' /etc/zabbix/zabbix_agentd.conf &&
+         sed -i 's/^Hostname=.*/Hostname=Zabbix server/' /etc/zabbix/zabbix_agentd.conf &&
+         sed -i 's/^Server=.*/Server=172.22.0.3/' /etc/zabbix/zabbix_agentd.conf &&
+         sed -i 's/^ServerActive=.*/ServerActive=172.22.0.3/' /etc/zabbix/zabbix_agentd.conf &&
+         /usr/sbin/zabbix_agentd -f"
+    expose:
+      - 10050
+    networks:
+      zabbix-network:
+        ipv4_address: 172.22.0.5
+    restart: always
+
+  zabbix-nginx:
+    depends_on:
+      - mysql
+    image: zabbix/zabbix-web-nginx-mysql:latest
+    container_name: zabbix-nginx
+    environment:
+      - DB_SERVER_HOST=${DB_SERVER_HOST}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - ZBX_SERVER_HOST=${ZBX_SERVER_HOST}
+      - PHP_TZ=${PHP_TZ}
+    ports:
+      - 80:8080
+      - 443:443
+    networks:
+      zabbix-network:
+        ipv4_address: 172.22.0.4
+    restart: always
+
+  zabbix-grafana:
+    image: grafana/grafana:latest
+    container_name: zabbix-grafana
+    environment:
+      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      zabbix-network:
+        ipv4_address: 172.22.0.6
+    restart: always
+
+networks:
+  zabbix-network:
+    name: zabbix-network
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
+          gateway: 172.22.0.1
+volumes:
+  mysql_data:
+    name: mysql
+  grafana_data:
+    name: grafana
+
