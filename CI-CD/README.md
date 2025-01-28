@@ -134,8 +134,18 @@
       
       - git tag -a v1.0.0 -m 'Release inicial'
       - git push origin v1.0.0
+
 ---
-- [ Etapa 8 - Configurar o Grafana com Prometheus e Node-Exporter ]
+- [ Etapa 8 - GitHub Webhook ]
+   - No repositório do seu github
+      - Settings -> Webhooks -> Add Webhook
+      - Em Payload URL, coloque a URL do por exemplo: http://<ip-instance>:8080/github-webhook/
+      - Em Content type, coloque: application/x-www-form-urlencoded
+   - No Jenkins
+      - Nas configurações da sua Pipeline, salve a opção "GitHub hook trigger for GITScm polling"
+
+---
+- [ Etapa 9 - Configurar o Grafana com Prometheus e Node-Exporter ]
    - VM 1 -> Jenkins
       - Entre na URL do Jenkins: http://ip_VM1:3000
          - Faça o login padrão, Login: admin e Password: admin
